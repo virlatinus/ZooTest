@@ -66,7 +66,7 @@ public class TaskQueueMaster implements Watcher {
 						// TODO: make the assignment to worker
 						workerToAssignment.put(worker, task);
 						assignmentToWorker.put(task, worker);
-					} catch(KeeperException e) {
+					} catch(Exception e) {
 						// no big deal, we'll clean up the worker later
 						eventCounter.incrementAndGet();
 					}
