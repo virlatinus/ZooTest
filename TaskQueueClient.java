@@ -12,7 +12,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class TaskQueueClient implements Watcher {
 
 	public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
-		if (args.length < 3) {
+		if (args.length < 2) {
 			System.err.println("USAGE: zkhostports cmd [args...]");
 			System.exit(2);
 		}
