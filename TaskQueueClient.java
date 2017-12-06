@@ -19,7 +19,7 @@ public class TaskQueueClient implements Watcher {
 		TaskQueueClient tqc = new TaskQueueClient();
 		ZooKeeper zk = new ZooKeeper(args[0], 10000, tqc);
 		byte cmdBytes[] = stringsToBytes(args, 1, args.length);
-		String taskPath = ""; // TODO: change to create a task in ZooKeeper. (use the SEQUENCE flag to get a unique id)
+		String taskPath = "/tasks"; // TODO: change to create a task in ZooKeeper. (use the SEQUENCE flag to get a unique id)
 		System.out.println("Submitted as " + taskPath);
 		tqc.waitForFinish(zk, taskPath);
 		System.out.println("Finished");
@@ -37,6 +37,7 @@ public class TaskQueueClient implements Watcher {
 
 	private void waitForFinish(ZooKeeper zk, String taskPath) throws InterruptedException, KeeperException {
 		// TODO: block until the command has finished running
+		Thread.sleep(2000);
 	}
 
 	public void process(WatchedEvent event) {

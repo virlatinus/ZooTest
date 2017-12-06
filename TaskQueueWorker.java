@@ -35,7 +35,7 @@ public class TaskQueueWorker implements Watcher {
 		TaskQueueWorker tq = new TaskQueueWorker();
 		ZooKeeper zk = new ZooKeeper(hostPort, 10000, tq);
 		tq.zk = zk;
-		tq.assignPath = ""; // TODO: create a znode to receive assignments and let the master know we are available (hit use SEQUENTIAL_EPHEMERAL)
+		tq.assignPath = "/assign"; // TODO: create a znode to receive assignments and let the master know we are available (hit use SEQUENTIAL_EPHEMERAL)
 		tq.checkAssignment();
 		while(true) {
 			QueuedAssignment assignment = tq.assignments.take();
